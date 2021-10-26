@@ -1,0 +1,37 @@
+<div>
+    <label>ID zamówienia:&nbsp;{{orderdetail.id}}</label>
+    <div>
+        <label><b>Klient:</b>&nbsp;{{orderdetail.customer}}&nbsp;</label>
+        <button class="btn btn-secondary" (click)="GetCustomerDetails()">Infromacje</button>
+        <label><b>Pracownik realizujący:</b>&nbsp;{{orderdetail.worker}}</label>
+    </div>
+    <div>
+        <label><b>Opis:</b></label>
+        <p>{{orderdetail.description}}</p>
+    </div>
+    <div>
+        <div>
+            <label><b>Data rozpoczęcia:</b>  {{orderdetail.order_Date}}</label>
+        </div>
+        <div>
+            <label><b>Status:</b></label>
+            <p>{{orderdetail.status}}</p>
+        </div>
+        <div>
+            <label><b>cena:</b>  {{orderdetail.price}}</label>
+        </div>
+        <div>
+            <label *ngIf="orderdetail.finished == true"><b>Zlecenie zakończone</b></label>
+            <label *ngIf="orderdetail.finished == false"><b>Zlecenie w trakcie realizacji</b></label>
+         </div>
+        </div>
+        <button class="btn btn-primary btn-lg" (click)="GoBack();">Cofnij</button>
+        
+    <div *ngIf="orderdetail.finished == false">
+        <label>Dodaj wiadomość do Klienta:&nbsp;</label>
+        <input type="text" [(ngModel)]="updatestatus.status">
+        <button class="btn btn-primary btn-lg"(click)="AddStatus()">Dodaj</button>
+    
+    <div><button class="btn btn-danger" (click)="FinishOrder()">Zakończ</button></div>
+    </div>
+</div>

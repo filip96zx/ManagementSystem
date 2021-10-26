@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE0067: Likwiduj obiekty przed utratą zakresu
+dotnet_diagnostic.IDE0067.severity = none
+
+# CS0114: Składowa ukrywa dziedziczoną składową; brak słowa kluczowego override
+dotnet_diagnostic.CS0114.severity = none

@@ -1,0 +1,50 @@
+<table class="table">
+    <thead>
+        
+        <tr>
+          <th scope="col"><button class="btn btn-primary btn-sm" (click)="filterusers()" >filtruj</button></th>
+          <th scope="col"><input (keyup.enter)="filterusers()" type="text" placeholder="Imie" [(ngModel)]="userFilter.name"></th>
+          <th scope="col"><input (keyup.enter)="filterusers()" type="text" placeholder="Nazwisko" [(ngModel)]="userFilter.surname"></th>
+          <th scope="col"></th>
+          <th scope="col">
+            <label>Rola</label>
+            <select (keyup.enter)="filterusers()" class="form-control" [(ngModel)]="rol">
+                <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+              </select>
+          </th>
+  
+        </tr>
+
+      <tr>
+          <th class="font-weight-bold" scope="col">id</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == null || surnameSorted == true || roleSorted == true" (click)="sortName()" scope="col">Imie &#x21D5;</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == true && surnameSorted == false && roleSorted == false" (click)="sortName()" scope="col">Imie &dArr;</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == false && surnameSorted == false && roleSorted == false" (click)="sortName()" scope="col">Imie &uArr;</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == null || nameSorted == true || roleSorted == true" (click)="sortSurName()" scope="col">Nazwisko &#x21D5;</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == true && nameSorted == false && roleSorted == false" (click)="sortSurName()" scope="col">Nazwisko &dArr;</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == false && nameSorted == false && roleSorted == false" (click)="sortSurName()" scope="col">Nazwisko &uArr;</th>
+          <th class="font-weight-bold" scope="col">Email</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == null || surnameSorted == true || nameSorted == true" (click)="sortRole()" scope="col">Rola &#x21D5;</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == true && nameSorted == false && surnameSorted == false" (click)="sortRole()" scope="col">Rola &dArr;</th>
+          <th class="font-weight-bold" *ngIf="this.userFilter.sortDesc == false && nameSorted == false && surnameSorted == false" (click)="sortRole()" scope="col">Rola &uArr;</th>
+          <th class="font-weight-bold" scope="col">Telefon</th>
+          <th class="font-weight-bold" scope="col">Edycja</th>
+
+    
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.email}}</td>
+        <ng-container *ngFor="let role of roles">
+        <td *ngIf="role.id == user.role">{{role.name}}</td>
+        </ng-container>
+        <td>{{user.phone}}</td>
+        <button type="button" (click)="updateUser(user.id)" class="btn btn-primary btn-sm">Edytuj</button>
+      </tr>
+    </tbody>
+  </table>
+  

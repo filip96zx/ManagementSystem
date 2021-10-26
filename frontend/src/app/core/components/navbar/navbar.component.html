@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Strona główna</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/contact">Kontakt</a>
+        </li>
+        <!--   MENU KONT -->
+        <ng-container *ngIf="currentUser != null">
+        <ng-container *ngIf="currentUser.Role == 'user'">
+          <li class="nav-item ">
+            <a class="nav-link" href="customer/createorder">Nowe zlecenie</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="customer/activeorders">Zlecenia realizowane</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="customer/finishedorders">Zlecenia zakończone</a>
+          </li> 
+        </ng-container>
+        <ng-container *ngIf="currentUser.Role == 'admin'">
+          <li class="nav-item ">
+            <a class="nav-link" href="admin/userlist">Zarządzanie użytkownikami</a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="currentUser.Role == 'manager'">
+          <li class="nav-item ">
+            <a class="nav-link" href="manager/waitingorders">Zlecenia oczekujące</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="manager/activeorders">Zlecenia realizowane</a>
+          </li>      
+          <li class="nav-item ">
+            <a class="nav-link" href="manager/finishedorders">Zlecenia zakończone</a>
+          </li> 
+        </ng-container>
+        <ng-container *ngIf="currentUser.Role == 'worker'">
+          <li class="nav-item ">
+            <a class="nav-link" href="worker/activeorders">Zlecenia realizowane</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="worker/finishedorders">Zlecenia zakończone</a>
+          </li>
+        </ng-container>
+      </ng-container>
+          <!--------------------------------------------------------->
+      </ul>
+      <ul class="navbar-nav navbar-right mt-2 mt-lg-0 ">
+        <ng-container *ngIf="!isLogged()">
+        <li class="nav-item ">
+          <a class="nav-link" href="/auth/register">Rejestracja</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/auth/login">Zaloguj</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="isLogged()">
+        <li class="nav-item">
+          <span class="navbar-text" >Zalogowano: {{currentUser.Name}} {{currentUser.Surname}}</span>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="profilemanager/editprofile">Edytuj profil</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" (click)="logout()" href="#">Wyloguj</a>
+        </li>
+      </ng-container>
+      </ul>
+  
+    </div>
+  </nav>
+  

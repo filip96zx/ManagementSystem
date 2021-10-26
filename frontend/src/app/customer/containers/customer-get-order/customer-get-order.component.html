@@ -1,0 +1,28 @@
+<div>
+    <label>ID zamówienia:&nbsp;{{orderdetail.id}}</label>
+    <div>
+        <label><b>Klient:</b>&nbsp;{{orderdetail.customer}}&nbsp;</label>
+        <label><b>Pracownik realizujący:</b>&nbsp;{{orderdetail.worker}}</label>
+    </div>
+    <div>
+        <label><b>Opis:</b></label>
+        <p>{{orderdetail.description}}</p>
+    </div>
+    <div>
+        <div>
+            <label><b>Data rozpoczęcia:</b>  {{orderdetail.order_Date}}</label>
+        </div>
+        <div>
+            <label><b>Status:</b></label>
+            <div><p>{{orderdetail.status}}</p></div>      
+        </div>
+        <div>
+            <label><b>cena:</b>  {{orderdetail.price}}</label>
+        </div>
+        <div>
+            <label *ngIf="orderdetail.finished == true"><b>Zlecenie zakończone</b></label>
+            <label *ngIf="orderdetail.finished == false"><b>Zlecenie w trakcie realizacji</b></label>
+         </div>
+        </div>
+        <button class="btn btn-primary btn-lg" (click)="GoBack()">cofnij</button>
+</div>

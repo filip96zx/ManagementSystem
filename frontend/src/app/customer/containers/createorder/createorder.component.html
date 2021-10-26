@@ -1,0 +1,41 @@
+<h1>Nowe zlecenie</h1>
+<div class="card">
+<form [formGroup]="orderForm" (submit)="onSubmit()">
+<div class="form-group p-4">
+    <div class="form-group">
+        <input class="form-check-input" type="checkbox" value="true" formControlName="option1">
+        <label class="form-check-label" for="defaultCheck1">
+        Serwis
+        </label>
+    </div>
+    <div class="form-group">
+        <input class="form-check-input" type="checkbox" value="true" formControlName="option2">
+        <label class="form-check-label" for="defaultCheck1">
+        Naprawa
+        </label>
+    </div>
+    <div class="form-group">
+        <input class="form-check-input" type="checkbox" value="true" formControlName="option3">
+        <label class="form-check-label" for="defaultCheck1">
+        Czyszczenie
+        </label>
+    </div>
+    <div class="form-group">
+        <input class="form-check-input" type="checkbox" value="true" formControlName="option4">
+        <label class="form-check-label" for="defaultCheck1">
+        Konserwacja
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Opis zlecenia:</label>
+        <input style="height:100px" class="form-control" type="text" height="480" formControlName="details">
+        <div>
+            <label class="text-danger"
+            *ngIf="orderForm.get('details').touched && orderForm.get('details').errors?.required">To
+            pole jest obowiązkowe.</label>
+        </div>
+    </div>
+    </div>
+    <button class="btn btn-primary btn-lg mr-1" type="submit">Wyślij</button>
+</form>
+</div>

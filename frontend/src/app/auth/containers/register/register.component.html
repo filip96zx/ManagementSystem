@@ -1,0 +1,85 @@
+<div class="col d-flex justify-content-center">
+<div class="col-md-6">
+  <h2>Rejestracja</h2>
+  <form [formGroup]="registerForm" autocomplete="off" (submit)="onFormSubmit()">
+    <div class="form-group required">
+        <label>Email</label>
+        <input class="form-control" type="email" formControlName="email">
+        <label class="text-danger"
+          *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.required">To
+          pole jest obowiązkowe.</label>
+        <label class="text-danger"
+          *ngIf="registerForm.get('email').touched && registerForm.get('email').errors?.email">nieprawidłowy
+          adres email.</label>
+      </div>
+    <div class="form-group required">
+      <label>Hasło</label>
+      <input type="password" class="form-control" formControlName="password">
+      <label class="text-danger"
+        *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.required">To
+        pole jest obowiązkowe.</label>
+      <label class="text-danger"
+        *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.minlength">Hasło
+        powinno miec minimum 4 znaki</label>
+    </div>
+    <div class="form-group required">
+      <label>Powtórz hasło</label>
+      <input type="password" class="form-control" formControlName="confirmPassword">
+      <label class="text-danger"
+        *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.required">To
+        pole jest obowiązkowe.</label>
+      <label class="text-danger"
+        *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.passwordMismatch">Hasła
+        nie są takie same</label>
+    </div>
+    <div class="form-group required">
+      <label>Imie</label>
+      <input class="form-control" formControlName="name">
+      <label class="text-danger"
+        *ngIf="registerForm.get('name').touched && registerForm.get('name').errors?.required">To
+        pole jest obowiązkowe.</label>
+    </div>
+    <div class="form-group required">
+      <label>Nazwisko</label>
+      <input class="form-control" formControlName="surname">
+      <label class="text-danger"
+        *ngIf="registerForm.get('surname').touched && registerForm.get('surname').errors?.required">To
+        pole jest obowiązkowe.</label>
+    </div>
+    <div class="form-group required">
+      <label>Data Urodzenia</label>
+      <input class="form-control" type="date" formControlName="dateOfBirth">
+      <label class="text-danger"
+        *ngIf="registerForm.get('dateOfBirth').touched && registerForm.get('dateOfBirth').errors?.required">To pole jest
+        obowiązkowe.</label>
+    </div>
+    <div class="form-group required">
+        <label>Telefon</label>
+        <input class="form-control" formControlName="phone">
+        <label class="text-danger"
+          *ngIf="registerForm.get('phone').touched && registerForm.get('phone').errors?.required">To
+          pole jest obowiązkowe.</label>
+      </div>
+    <div class="form-group required">
+      <label>Miasto</label>
+      <input class="form-control" formControlName="city">
+      <label class="text-danger"
+        *ngIf="registerForm.get('city').touched && registerForm.get('city').errors?.required">To pole jest
+        obowiązkowe.</label>
+    </div>
+    <div class="form-group required">
+      <label>Adres</label>
+      <input class="form-control" formControlName="address">
+      <label class="text-danger"
+        *ngIf="registerForm.get('address').touched && registerForm.get('address').errors?.required">To pole jest
+        obowiązkowe.</label>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-4 offset-md-2">
+        <button type="submit" class="btn btn-sm btn-primary btn-block">Zajerestruj
+          się</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

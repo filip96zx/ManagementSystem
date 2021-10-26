@@ -1,0 +1,42 @@
+<div>
+    <label>ID zamówienia:&nbsp;{{orderdetail.id}}</label>
+    <div>
+        <label><b>Klient:</b>&nbsp;{{orderdetail.customer}}&nbsp;</label>
+        <label><b>Pracownik realizujący:</b>&nbsp;{{orderdetail.worker}}</label>
+    </div>
+    <div>
+        <label><b>Opis:</b></label>
+        <p>{{orderdetail.description}}</p>
+    </div>
+    <div>
+        <div>
+            <label><b>Data rozpoczęcia:</b>  {{orderdetail.order_Date}}</label>
+        </div>
+        <div>
+            <label><b>Status:</b></label>
+            <div><p>{{orderdetail.status}}</p></div>      
+        </div>
+        <div>
+            <label><b>cena:</b>  {{orderdetail.price}}</label>
+        </div>
+        <div>
+            <label *ngIf="orderdetail.finished == true"><b>Zlecenie zakończone</b></label>
+            <label *ngIf="orderdetail.finished == false"><b>Zlecenie w trakcie realizacji</b></label>
+         </div>
+        </div>
+        <button class="btn btn-primary btn-lg" (click)="GoBack()">cofnij</button>
+        <div *ngIf="orderdetail.worker == null">
+        <form [formGroup]="assignWorker" (submit)="onSubmit()">
+            <div>
+            <label>Przydziel pracownika:</label>
+            <select class="form-control" (click)="GetWorkerList()" formControlName="workerId">
+                <option *ngFor="let worker of workerlist" [value]="worker.workerId">{{worker.name}}, zlecenia:{{worker.orderCount}}</option>
+            </select>
+            </div>
+            <div>
+            <label>Cena:</label><input type="text" formControlName="Price">
+            <button class="btn btn-primary btn-lg mr-1" type="submit">Zapisz</button>
+            </div>
+        </form>
+        </div>
+</div>

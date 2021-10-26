@@ -1,0 +1,22 @@
+<h1>Zlecenia zakończone:</h1>
+<table class="table">
+    <thead>
+        <tr>
+        <th class="font-weight-bold" scope="col">id</th>
+        <th class="font-weight-bold" scope="col">Klient</th>
+        <th class="font-weight-bold" scope="col">Pracownik</th>
+        <th class="font-weight-bold" scope="col">Status</th>
+        <th class="font-weight-bold" scope="col">Data złożenia</th>
+        <th class="font-weight-bold" scope="col">Szczegóły</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orderlist">
+            <th scope="row">{{order.id}}</th>
+            <td>{{order.customer}}</td>
+            <td>{{order.worker}}</td>
+            <td><p>{{order.status}}</p></td>
+            <td>{{order.order_Date}}</td>
+            <button type="button" (click)="GetOrder(order.id)" class="btn btn-primary btn-sm">Szczegóły</button>
+        </tr>
+    </tbody>
